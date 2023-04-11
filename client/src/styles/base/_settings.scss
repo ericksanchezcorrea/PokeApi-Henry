@@ -1,0 +1,15 @@
+//Variables
+
+// fuente
+$fuente: 'Raleway',sans-serif;
+$color2: blue;
+
+
+
+// Por defecto
+
+html{
+    scroll-behavior: smooth;
+    font-family: $fuente;
+    font-size: 18px;
+}

@@ -1,0 +1,69 @@
+.form_wrapper{
+
+    padding: 20px;
+    
+    h2{
+        text-align: center;
+        margin: 5px;
+    }
+    
+    form{
+
+        text-align: center;
+        
+        .inputTextContainer label {
+            display: inline-block;
+            width: 90px;
+        }
+    
+        p{
+            text-align: center;
+        }
+    }
+    
+    .inputCheckContainer{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 100px;
+        flex-wrap: wrap;
+
+        div{
+            width: auto;
+
+            label{
+                display: block;
+                text-align: left;
+
+                input{
+                    display: inline-block;
+                    width: 50px;
+                    transform: scale(1.2);
+
+                }
+            }
+        }
+        
+    }
+
+    .response_container{
+        display: flex;
+        justify-content: center;
+
+        .response{
+            text-align: center;
+            padding: 10px 15px;
+            border-radius: 8px;
+        }
+    
+        .success{
+            background-color: green;
+            color: white;
+        }
+    
+        .warning{
+            background-color: #ef233c;
+            color: #edf2f4;
+        }
+    }
+}

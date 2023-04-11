@@ -1,0 +1,32 @@
+.cardContainer_wrapper{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 50px 20px;
+
+    a{
+        cursor: pointer;
+        text-decoration: none;
+        color: black;
+    }
+    .spinner{
+        border:4px solid rgba(0, 0, 0, .7);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border-left-color: transparent;
+        animation: spin 1s linear infinite;
+
+    }
+
+    @keyframes spin{
+        0%{
+            transform: rotate(0deg);
+        }
+        100%{
+            transform: rotate(360deg);
+        }
+    }
+    
+}

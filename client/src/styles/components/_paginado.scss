@@ -1,0 +1,15 @@
+.paginado_wrapper{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding-bottom: 20px;
+
+    button{
+        user-select: none;
+    }
+
+    .isSelect{
+        color: blue;
+        background-color: yellow;
+    }
+}

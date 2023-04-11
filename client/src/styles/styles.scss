@@ -1,0 +1,18 @@
+// ui settings
+@use './base/normalize';
+@use './base/settings';
+
+
+// components
+@use './components/detail';
+@use './components/form';
+@use './components/home';
+@use './components/landing';
+@use './components/notFound';
+@use './components/searchBar';
+@use './components/cardContainer';
+@use './components/pokecard';
+@use './components/menu';
+@use './components/paginado';
+
+// screens
