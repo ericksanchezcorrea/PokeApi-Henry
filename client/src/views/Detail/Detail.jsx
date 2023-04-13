@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import {useParams, useNavigate} from 'react-router-dom'
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import * as actions from "../../redux/actions"
 
 function Detail() {
@@ -29,15 +29,16 @@ function Detail() {
 
       })();
       
-    }, [])
+    }, [url])
 
     const buffer = pokemon && Buffer.from(pokemon.image);
     const data = buffer && buffer.toString('utf8');
-
+console.log(typeof pokemon?.attack)
+console.log(typeof pokemon?.speed)
   return (
     <div className='detail_wrapper'>
       <button onClick={()=>{navigate("/home");
-                            dispatch(actions.actualizarPaginado(1))}}>Home</button>
+                            dispatch(actions.actualizarPaginado(1))}}>Ver más pokemons</button>
       <h2>{pokemon?.name.toUpperCase()} </h2>
       <h3>Id: {id}</h3>
       {

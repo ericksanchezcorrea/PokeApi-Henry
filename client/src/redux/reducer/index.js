@@ -2,7 +2,7 @@ import * as TYPES from '../actions/index.js'
 
 const initialState = {
   
-  search: null,
+  search: "",
   pokemons: [],
   originalPokemons: [],
   page:1
@@ -17,6 +17,9 @@ const rootReducer = (state = initialState, {type, payload}) => {
 
     case TYPES.GET_ALL_POKEMONS: 
       return {...state, pokemons: [...payload], originalPokemons:[...payload]}
+
+    case TYPES.GET_BY_NAME: 
+      return {...state, pokemons: [...payload]}
 
     case TYPES.ORDENAR_ASCENDENTE: 
       return {...state, pokemons: [...payload]}
@@ -47,6 +50,7 @@ const rootReducer = (state = initialState, {type, payload}) => {
 
     case TYPES.ACTUALIZAR_PAGINADO: 
       return {...state, page: payload}
+
 
     default: 
       return initialState

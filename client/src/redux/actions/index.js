@@ -10,14 +10,33 @@ export const NO_FILTER = 'NO_FILTER';
 export const FILTRAR_TIPO = 'FILTRAR_TIPO';
 export const CAMBIAR_PAGINADO = 'CAMBIAR_PAGINADO';
 export const ACTUALIZAR_PAGINADO = 'ACTUALIZAR_PAGINADO';
+export const GET_BY_NAME = 'GET_BY_NAME';
 
 
 export const ActualizarName = (name) => async dispatch =>{
     return dispatch({type: ACTUALIZAR_NAME, payload: name})
 }
 
-export const getAllPokemons = (data) => async dispatch => {
-    return dispatch({type: GET_ALL_POKEMONS, payload: data})
+export const getAllPokemons = (url) => async dispatch => {
+    const data = await fetch(url);
+    const response = await data.json();
+
+    return dispatch({type: GET_ALL_POKEMONS, payload: response})
+};
+
+export const getByName = (name) => async dispatch => {
+    
+    const URL = `http://localhost:3001/pokemons/?name=${name}`;
+    const data = await fetch(URL);
+    
+    if(data.status === 400){
+        return dispatch({type: GET_BY_NAME, payload: []})    
+    }
+    else{
+        const response = await data.json();
+        return dispatch({type: GET_BY_NAME, payload: response})
+    }
+
 };
 
 
@@ -51,21 +70,21 @@ export const ordenarNombreAscendente = (data) => async dispatch => {
 
 // Filtros
 export const filtrarPokeApi = (data) => async dispatch => {
-    return dispatch({type: FILTRAR_POKEAPI, payload: data.filter(d=> d.db == "pokeapi" )})
+    return dispatch({type: FILTRAR_POKEAPI, payload: data.filter(d=> d.db === "pokeapi" )})
 };
 
 export const filtrarDB = (data) => async dispatch => {
-    return dispatch({type: FILTRAR_BD, payload: data.filter(d=> d.db == "db" ) })
+    return dispatch({type: FILTRAR_BD, payload: data.filter(d=> d.db === "db" ) })
 };
 
 export const noFilter = (data) => async dispatch => {
     return dispatch({type: NO_FILTER, payload: data})
 };
 
-export const filtrarTipo = (type) => async dispatch => {
+export const filtrarTipo = (type, data) => async dispatch => {
 
-    if(type == "-"){
-        return
+    if(type === "---"){
+        return dispatch({type: FILTRAR_TIPO, payload: data})
     }
     else{
         const datos = await fetch(`http://localhost:3001/pokemons/filter/${type}`)

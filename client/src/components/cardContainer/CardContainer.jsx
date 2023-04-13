@@ -7,44 +7,22 @@ import * as actions from "../../redux/actions"
 
 function CardContainer() {
     
-    const pokemon = useSelector(state => state.search);
     const pokemons = useSelector(state => state.pokemons);
     const dispatch = useDispatch();
 
-    const [error, setError] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
-    
-    const url = `http://localhost:3001/pokemons/${pokemon ? "?name="+pokemon : ""}`
-    
-    async function getAll (){
-        try{
-            let data = await fetch(url)
-            let respuesta = await data.json()
-            if(data.status == 400){
-                setIsLoading(false)
-                setError(true)
-                dispatch(actions.getAllPokemons([]))                
-                return
-            }else{
-                setIsLoading(false)
-                setError(false)
-                return respuesta
-            }
-        }catch(error){
-            console.log(error)
-        }
-    }    
+
+    const url = "http://localhost:3001/pokemons/"
+
+    const getAll = async()=>{
+        await dispatch(actions.getAllPokemons(url))
+        setIsLoading(false)
+    }
 
     useEffect(() => {
-
-        (async function() {
-            const datos = await getAll(url);
-            if(typeof datos == 'object'){
-                dispatch(actions.getAllPokemons(datos))
-            }
-        })();
-        
-    }, [url])
+        getAll()
+    }, [])
+    
     
   return (
     <div className='cardContainer_wrapper'>
@@ -56,7 +34,8 @@ function CardContainer() {
             </div>
         }
 
-        {error && <div>Pokemon no encontrado</div> }
+        {!isLoading && pokemons.length === 0 && <div>Pokemon no encontrado</div>}
+        
         {!isLoading && pokemons && pokemons.map((el)=>
             { 
                 return (<Link to={`/detail/${el.id}`}  key={el.id}>
