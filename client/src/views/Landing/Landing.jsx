@@ -7,7 +7,7 @@ function Landing() {
     <div className='landing_wrapper'>
         <h1>Henry Pokemon by Erick Sánchez</h1>
 
-        <img src={Pokemon} alt="pokemon" style={{height:'300px', width:'400px'}} />
+        {/* <img src={Pokemon} alt="pokemon" style={{height:'300px', width:'400px'}} /> */}
         
         <div>
           <Link to='/home'><button>Home</button></Link>        

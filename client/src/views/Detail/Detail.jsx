@@ -33,8 +33,6 @@ function Detail() {
 
     const buffer = pokemon && Buffer.from(pokemon.image);
     const data = buffer && buffer.toString('utf8');
-console.log(typeof pokemon?.attack)
-console.log(typeof pokemon?.speed)
   return (
     <div className='detail_wrapper'>
       <button onClick={()=>{navigate("/home");

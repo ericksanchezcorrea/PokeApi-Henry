@@ -20,8 +20,8 @@ export const ActualizarName = (name) => async dispatch =>{
 export const getAllPokemons = (url) => async dispatch => {
     const data = await fetch(url);
     const response = await data.json();
-
     return dispatch({type: GET_ALL_POKEMONS, payload: response})
+
 };
 
 export const getByName = (name) => async dispatch => {
