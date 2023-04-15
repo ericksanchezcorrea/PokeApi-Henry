@@ -15,8 +15,12 @@ function CardContainer() {
     const url = "http://localhost:3001/pokemons/"
 
     const getAll = async()=>{
-        await dispatch(actions.getAllPokemons(url))
-        setIsLoading(false)
+        try {
+            await dispatch(actions.getAllPokemons(url))
+            setIsLoading(false)
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     useEffect(() => {
